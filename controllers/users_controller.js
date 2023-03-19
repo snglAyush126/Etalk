@@ -18,6 +18,7 @@ module.exports.profile = async function(req,res){
  }
 }
  else{
+   console.log('Error in loading profile page!');
   return res.redirect('/users/sign-in');
  } 
 

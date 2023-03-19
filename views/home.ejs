@@ -2,6 +2,8 @@
   <h1>Etalk  <%= title %></h1>
 
 <section id="feed-posts">
+  
+  <% if(locals.user) { %>
   <h4>Posts</h4>
 
   <div id="post-list-container">
@@ -24,6 +26,6 @@
  <textarea name="content"  cols="30" rows="3"></textarea>
  <input type="submit" value="Post">
 </form>
-
+ <% } %>
 
 </section>
