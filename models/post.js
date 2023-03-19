@@ -9,7 +9,8 @@ content: {
 user: {
     type:mongoose.Schema.ObjectId,
     ref: 'User'
-},
+
+}},{
     timestamps: true
 
 });
