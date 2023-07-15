@@ -12,7 +12,12 @@ const userSchema = new mongoose.Schema({
   name: {
     type: String,
     required: true
-  }
+  },friendships: [
+    {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'Friendship'
+    }
+  ]
 },{
   timestamps: true
 });

@@ -7,28 +7,29 @@ const db = require('./config/mongoose');
 const session = require('express-session');
 const passport = require('passport');
 const passportLocal = require('./config/passport-local-strategy');
-//const { Store } = require('express-session');
 const MongoStore =  require('connect-mongo');
+const flash = require('connect-flash');
+const customMware = require('./config/middleware');
+
+// setup the chat server to be used with socket.io
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_socket').chatSockets(chatServer);
+chatServer.listen(5000);
+console.log(`Chat server is running on port: 5000`);
+
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
-
 app.use(express.static('./assets'));
 app.use(expressLayouts);
-
 // extract style and scripts from sub pages into the layout
 app.set('layout extractStyles',true);
 app.set('layout extractScripts',true);
-
-
 // set up the view engine
 app.set('view engine','ejs');
 app.set('views','./views');
-
 // mongo store is used to store the session cookie in the db
-
 app.use(session({
   name: 'etalk',
-// TODO change the secret before deplyoment in production mode
   secret: 'blahsomething',
   saveUninitialized: false,
   resave: false,
@@ -46,6 +47,8 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(passport.setAuthenticatedUser);
+app.use(flash());
+app.use(customMware.setFlash);
 // use express router
 app.use('/',require('./routes'));
 

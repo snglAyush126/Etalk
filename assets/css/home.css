@@ -1,11 +1,12 @@
 /* Navigation bar styles */
+
 nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     background-color: #007bff;
-    color: #fff;
+    color: black;
   }
   
   nav h1 {
@@ -14,7 +15,9 @@ nav {
   }
   
   #feed-posts {
-    background-color: #f5f5f5;
+    /* background-color: #f5f5f5; */
+  width: 100%;
+   background-color: lavender;
     padding: 20px;
     border-radius: 5px;
   }
@@ -38,7 +41,9 @@ nav {
     border-bottom: 1px solid #ccc;
     padding: 10px 0;
   }
-  
+  #post-list-container li a:hover{
+  color: red;
+  }
   #post-list-container li:last-child {
     border-bottom: none;
   }
@@ -66,7 +71,9 @@ nav {
     border: 1px solid #ccc;
     resize: vertical;
   }
-  
+  #post-comment input[type="submit"] {
+    background-color: lightblue;
+  }
   #new-post-form input[type="submit"] {
     background-color: #007bff;
     color: #fff;
@@ -78,6 +85,16 @@ nav {
   }
   
   #new-post-form input[type="submit"]:hover {
-    background-color: #0062cc;
+    /* background-color: #0062cc; */
+   background-color: lightblue;
+   color: black;
   }
-  
+  #home-log-out{
+    margin: 100px;
+    color: black;
+  }
+  #home-container #user-friends {
+    display: inline-block;
+    width: 20%;
+    padding: 10px;
+    border-left: 1px solid lightgrey; }

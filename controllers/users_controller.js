@@ -1,27 +1,49 @@
 const User = require('../models/user');
-module.exports.profile = async function(req,res){
- if(req.cookies.user_id){
-  try {
-    const user = await User.findById(req.cookies.user_id);
- if (user) {
-      return res.render('user_profile',{
-        title: "User Profile",
-        user: user
-      })
-  } 
-    return res.redirect('/users/sign-in');
+// module.exports.profile = async function(req,res){
+//   if(req.cookies.user_id){
+//   try {
+//     const user = await User.findById(req.cookies.user_id);
+//  if (user) {
+//       return res.render('user_profile',{
+//         title: "User Profile",
+//         user: user
+//       });
+//   } 
+//     return res.redirect('/users/sign-in');
   
-  } catch (err) {
-    console.log('error in finding user in signing up', err);
-    return;
+//   } catch (err) {
+//     console.log('error in finding user in signing up', err);
+//     return;
   
- }
-}
- else{
-   console.log('Error in loading profile page!');
-  return res.redirect('/users/sign-in');
- } 
+//  }
+// }
+//   else{
+//     console.log('Error in loading profile page!');
+//    return res.redirect('/users/sign-in');
+//   } 
 
+// }
+module.exports.profile = async function(req, res)
+{
+  const user = await  User.findById(req.params.id);
+    
+  try{
+        return res.render('user_profile',
+        {
+            title: 'Etalk | Profile',
+            user: user
+        });
+    }
+    catch(err){
+      console.log('error in finding user in signing up', err);
+      return;
+    };
+}
+
+module.exports.profile = function(req, res){
+  return res.render('user_profile', {
+      title: 'User Profile'
+  })
 }
 
 // render sign-up page
@@ -65,18 +87,24 @@ try {
 }
 
 module.exports.createSession = function(req,res){
-return res.redirect('/');
+
+  req.flash('success','Logged in');
+  return res.redirect('/');
 }
 
 module.exports.destroySession = function(req,res){
+ 
   req.logout(req.user, err => {
-    if(err) {
+   req.flash('success','Logged Out');
+  
+   if(err) {
     console.log('Error found!');
       return next(err);
     
     }
       res.redirect('/');
-  });
+    });
+
   };
     
   
