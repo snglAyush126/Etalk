@@ -24,7 +24,7 @@ class ChatEngine
             self.socket.emit('join_room', 
             {
                 user_email: self.userEmail,
-                chatroom: 'codeial'
+                chatroom: 'etalk'
             });
 
             self.socket.on('user_joined', function(data)
@@ -43,7 +43,7 @@ class ChatEngine
                 {
                     message: msg,
                     user_email: self.userEmail,
-                    chatroom: 'codeial'
+                    chatroom: 'etalk'
                 });
             }
         });
@@ -75,4 +75,4 @@ class ChatEngine
             $('#chat-messages-list').append(newMessage);
         });
     }
-}s
+}

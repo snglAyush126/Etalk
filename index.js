@@ -10,6 +10,7 @@ const passportLocal = require('./config/passport-local-strategy');
 const MongoStore =  require('connect-mongo');
 const flash = require('connect-flash');
 const customMware = require('./config/middleware');
+const bcrypt= require("bcryptjs");
 
 // setup the chat server to be used with socket.io
 const chatServer = require('http').Server(app);
