@@ -1,61 +1,71 @@
 const User = require('../models/user');
 const bcrypt= require("bcryptjs");
-module.exports.profile = async function(req,res){
-  if(req.cookies.user_id){
-  try {
-    const user = await User.findById(req.cookies.user_id);
- if (user) {
-      return res.render('user_profile',{
-        title: "User Profile",
-        user: user
-      });
-  } 
-    return res.redirect('/users/sign-in');
+// module.exports.profile = async function(req,res){
+//   if(req.cookies.user_id){
+//   try {
+//     const user = await User.findById(req.cookies.user_id);
+//  if (user) {
+//       return res.render('user_profile',{
+//         title: "User Profile",
+//         user: user
+//       });
+//   } 
+//     return res.redirect('/users/sign-in');
   
-  } catch (err) {
-    console.log('error in finding user in signing up', err);
-    return;
+//   } catch (err) {
+//     console.log('error in finding user in signing up', err);
+//     return;
   
- }
-}
-  else{
-    console.log('Error in loading profile page!');
-   return res.redirect('/users/sign-in');
-  } 
+//  }
+// }
+//   else{
+//     console.log('Error in loading profile page!');
+//    return res.redirect('/users/sign-in');
+//   } 
 
-}
-
-
-// module.exports.profile = async function(req, res)
-// {
-//   const user = await User.findById(req.params.id);
-    
-//   try{
-//         return res.render('user_profile',
-//         {
-//             title: 'Etalk | Profile',
-//             user: user
-//         });
-//     }
-//     catch(err){
-//       console.log('error in finding user in signing up', err);
-//       return;
-//     };
 // }
 
-module.exports.profile = function(req, res){
-  return res.render('user_profile', {
-      title: 'User Profile'
-  })
+
+module.exports.profile = async function(req, res)
+{
+  const user = await User.findById(req.params.id);
+    
+  try{
+        return res.render('user_profile',
+        {
+            title: 'Etalk | Profile',
+            user: user
+        });
+    }
+    catch(err){
+      console.log('error in finding user in signing up', err);
+      return;
+    };
 }
 
+// module.exports.profile = function(req, res){
+//   return res.render('user_profile', {
+//       title: 'User Profile'
+//   })
+// }
+
 // render sign-up page
-module.exports.signUp= function(req,res){
+module.exports.signup= function(req,res){
   if(req.isAuthenticated()){
     return res.redirect('/users/profile');
   }
   return res.render('user_sign_up',{
     title: "Etalk | Sign up "
+  });
+
+}
+module.exports.sudoku= function(req,res){
+  
+  // return res.render('user_sign_up',{
+  //   title: "Etalk | Sign up "
+  // });
+  return res.render('sudoku',{
+    title: "Etalk | Games"
   });
 }
 

@@ -1,7 +1,7 @@
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
-const port = 3000;
+const port = 9000;
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const session = require('express-session');
@@ -35,10 +35,11 @@ app.use(session({
   saveUninitialized: false,
   resave: false,
  cookie:{
-    maxAge: (1000*60 *100)
+    maxAge: (1000*60*100)
   },
  store: MongoStore.create({
- mongoUrl: 'mongodb://127.0.0.1:27017/etalk_development',
+//  mongoUrl: 'mongodb://127.0.0.1:27017/etalk_development',
+  mongoUrl: 'mongodb+srv://snglayush:Ayush123@cluster0.p5tsrwd.mongodb.net/Etalk',
  autoRemove: 'disabled'  
   },function(err){
     console.log(err);

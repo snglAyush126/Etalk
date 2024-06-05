@@ -1,7 +1,13 @@
 
 
 <% if (locals.user) { %>
+	<div id="openchat">
+		<button id="max">+</button>
+	</div>
 	<div id="user-chat-box">
+		<div id="minimize">
+			<button id="min">-</button>
+		</div>
 		<ul id="chat-messages-list">
 			<li class="other-message">
 				<span>Other Message</span>
@@ -18,4 +24,6 @@
 			<button id="send-message">Send</button>
 		</div>
 	</div>
+	<script src="/js/chatminimize.js"></script>
 <% } %>
+
