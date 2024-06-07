@@ -38,7 +38,8 @@ app.use(session({
     maxAge: (1000*60 *100)
   },
  store: MongoStore.create({
- mongoUrl: 'mongodb://127.0.0.1:27017/etalk_development',
+//  mongoUrl: 'mongodb://127.0.0.1:27017/etalk_development',
+ mongoUrl: 'mongodb+srv://snglakshat:Akshat1234@cluster0.5ujyyht.mongodb.net/talkNet',
  autoRemove: 'disabled'  
   },function(err){
     console.log(err);
