@@ -33,7 +33,7 @@ module.exports.profile = async function(req, res)
   try{
         return res.render('user_profile',
         {
-            title: 'Etalk | Profile',
+            title: 'TalkNet | Profile',
             user: user
         });
     }
@@ -52,29 +52,29 @@ module.exports.profile = async function(req, res)
 // render sign-up page
 module.exports.signup= function(req,res){
   if(req.isAuthenticated()){
-    return res.redirect('/users/profile');
+    return res.redirect('/');
   }
   return res.render('user_sign_up',{
-    title: "Etalk | Sign up "
+    title: "TalkNet | Sign up "
   });
 
 }
 module.exports.sudoku= function(req,res){
   
   // return res.render('user_sign_up',{
-  //   title: "Etalk | Sign up "
+  //   title: "TalkNet | Sign up "
   // });
   return res.render('sudoku',{
-    title: "Etalk | Games"
+    title: "TalkNet | Games"
   });
 }
 
 module.exports.signIn = function(req,res){
   if(req.isAuthenticated()){
-    return res.redirect('/users/profile');
+    return res.redirect('/');
   }
   return res.render('user_sign_in',{
-    title: "Etalk | Sign In"
+    title: "TalkNet | Sign In"
   });
 }
 
@@ -82,6 +82,7 @@ module.exports.signIn = function(req,res){
 module.exports.create = async function(req,res){
 
 if(req.body.password != req.body.confirm_password){
+  req.flash('error','Passwords do not match. Please try again');
   return res.redirect('back');
 }
 try {

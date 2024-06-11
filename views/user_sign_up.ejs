@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!-- <!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -17,6 +17,46 @@
     <input type="password" name="confirm_password" placeholder="Confirm Password" required>
     <input type="submit" value="Sign-up">
   </form>
+  <div class="signup-link">
+    <a href="/users/sign-in">Already have an Account</a>
+  </div>
+</body>
+
+</html> -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign up</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Sign up</h1>
+  <form class="signup-form" action="/users/create" method="post">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" id="password" name="password" placeholder="Password" required>
+    <div id="password-requirements">
+      <p>Password must contain:</p>
+      <ul>
+        <li id="special-char" class="invalid">At least one special character</li>
+        <li id="number" class="invalid">At least one number</li>
+        <li id="uppercase" class="invalid">At least one uppercase letter</li>
+        <li id="length" class="invalid">At least 6 characters</li>
+      </ul>
+    </div>
+    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+    <input type="submit" value="Sign-up" id="submit-button" disabled>
+  </form>
+  <div class="signup-link">
+    <a href="/users/sign-in">Already have an Account</a>
+  </div>
+  <script src="/js/signup_req.js"></script>
 </body>
 
 </html>

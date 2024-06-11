@@ -3,8 +3,8 @@
 <div id="main-container">
   <section id="feed-posts">
     <% if(locals.user) { %>
-       <div id="home-log-in">
-      <h3>Hello <%= locals.user.name %> :) Post something cool! Now </h3>
+    <div id="home-log-in">
+      <h3>Hello <%= locals.user.name %>! Welcome to TalkNet. Post something cool now.</h3>
       <form action="/posts/create" id="new-post-form" method="POST">
         <textarea name="content" cols="30" rows="3" required></textarea>
         <input type="submit" value="Post">
@@ -13,30 +13,43 @@
       <h4>Daily Posts</h4>
       <div id="post-list-container">
         <ul>
-          <% for(post of posts){%>
-            <%- include('_post') -%>
-          <% }%>
+          <% for(post of posts){ %>
+          <%- include('_post') -%>
+          <% } %>
         </ul>
       </div>
     </div>
-    <% } else { %>
-     
-        <h1>Hello!! sign-in or sign-up to continue</h1>
-      
-    <% } %>
   </section>
+
+    <% } else { %>
+    
+    <div id="welcome">
+      <header>
+        <h1>Welcome to TalkNet! </h1>
+        <h2>An easy way to share thoughts and ideas through posts and communicate with live chat facility.</h2>
+        <div class="button-container">
+          <a href="/users/sign-in" class="button1">Login</a>
+          <span class="separator"></span>
+          <a href="/users/sign-up" class="button1">Make a new account?</a>
+      </div>
+        
+    </header>
+    <!-- <img src="https://t3.ftcdn.net/jpg/01/76/98/40/360_F_176984023_8I82qQPmKn8TqNAZXIYMCSiwccoUiPBg.jpg" alt="Welcome"> -->
+  </div>
+    <% } %>
+  
 
   <aside id="user-friends">
     <% if(locals.user) { %>
-      <h4>Users</h4>
-      <% for(u of all_users) { %>
-        <p>
-          <a href="/users/profile/<%= u._id %>"><%= u.name %></a>
-        </p>
-      <% } %>
+    <h4>Users</h4>
+    <% for(u of all_users) { %>
+    <p class="custom-links">
+      <a href="/users/profile/<%= u._id %>"><%= u.name %></a>
+    </p>
+    <% } %>
     <% } else { %>
-      <div id="color-fill"></div>
-      <% } %>
+    <div id="color-fill"></div>
+    <% } %>
   </aside>
 </div>
 
@@ -50,7 +63,4 @@
   new ChatEngine('user-chat-box', '<%= locals.user.email %>');
 </script>
 <% } %>
-
-
-
 

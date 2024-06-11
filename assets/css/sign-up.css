@@ -30,11 +30,11 @@ body {
     border-radius: 4px;
   }
   
-  .signup-form input[type="submit"] {
+  /* .signup-form input[type="submit"] {
     display: block;
     width: 100%;
     padding: 10px;
-    background-color: #4CAF50;
+    background-color: #007bff;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -42,8 +42,56 @@ body {
   }
   
   .signup-form input[type="submit"]:hover {
-    background-color: #45a049;
+    background-color: #0056b3;
+  } */
+
+  .signup-form input[type="submit"] {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
   }
+  
+  .signup-form input[type="submit"]:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+  }
+
+  /* styles.css */
+
+
+
+#password-requirements {
+  font-size: 0.9em;
+  color: #666;
+}
+
+#password-requirements ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+#password-requirements li {
+  margin: 5px 0;
+}
+
+.invalid {
+  color: red;
+}
+
+.valid {
+  color: green;
+}
+
+.signup-link {
+  text-align: center;
+  margin-top: 20px;
+}
+
   
   /* Optional: Add additional styles for form elements like focus, hover, etc. */
   

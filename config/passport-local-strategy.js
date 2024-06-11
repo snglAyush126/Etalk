@@ -15,6 +15,10 @@ async function(req,email,password,done){
     //   req.flash('error','Invalid Username/Password');
     //   return done(null,false);
     // }
+    if(!user){
+      req.flash('error','Invalid Username/Password');
+      return done(null,false);
+    }
     const passmatch = await bcrypt.compare(password, user.password);
     console.log(passmatch);
     if (!user || !passmatch) {
@@ -71,3 +75,4 @@ next();
 
 
 module.exports = passport;
+

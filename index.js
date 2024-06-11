@@ -30,7 +30,7 @@ app.set('view engine','ejs');
 app.set('views','./views');
 // mongo store is used to store the session cookie in the db
 app.use(session({
-  name: 'etalk',
+  name: 'talknet',
   secret: 'blahsomething',
   saveUninitialized: false,
   resave: false,
@@ -39,7 +39,7 @@ app.use(session({
   },
  store: MongoStore.create({
 //  mongoUrl: 'mongodb://127.0.0.1:27017/etalk_development',
-  mongoUrl: 'mongodb+srv://snglayush:Ayush123@cluster0.p5tsrwd.mongodb.net/Etalk',
+  mongoUrl: 'mongodb+srv://snglayush:Ayush123@cluster0.p5tsrwd.mongodb.net/TalkNet',
  autoRemove: 'disabled'  
   },function(err){
     console.log(err);

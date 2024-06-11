@@ -24,7 +24,7 @@ class ChatEngine
             self.socket.emit('join_room', 
             {
                 user_email: self.userEmail,
-                chatroom: 'etalk'
+                chatroom: 'TalkNet'
             });
 
             self.socket.on('user_joined', function(data)
@@ -43,7 +43,7 @@ class ChatEngine
                 {
                     message: msg,
                     user_email: self.userEmail,
-                    chatroom: 'etalk'
+                    chatroom: 'TalkNet'
                 });
             }
         });

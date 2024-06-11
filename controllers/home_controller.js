@@ -2,7 +2,7 @@ const Post = require('../models/post');
 const User = require('../models/user');
 
 module.exports.home = async (req,res) =>{
-  //return res.end('<h1>Express is up for etalk </h1>');
+  //return res.end('<h1>Express is up for TalkNet </h1>');
   
   try{
   const posts = await Post.find({})
@@ -19,7 +19,7 @@ module.exports.home = async (req,res) =>{
         
         return res.render('home',
         {
-            title: 'Etalk| Home',
+            title: ' TalkNet',
             posts: posts,
             all_users: users
         });
@@ -32,7 +32,7 @@ catch(err){
 
 // Post.find({}).populate('user').exec(function(err,posts){
 //   return res.render('home',{
-//     title: "Etalk | Home",
+//     title: "TalkNet | Home",
 //     posts: posts
 //   });
 // });
