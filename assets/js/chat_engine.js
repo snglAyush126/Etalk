@@ -5,7 +5,7 @@ class ChatEngine
     {
         this.chatBox = $(`#${chatBoxId}`);
         this.userEmail = userEmail;
-        this.socket = io.connect(`${process.env.CHAT_PORT}`);
+        this.socket = io.connect('https://etalk-service.onrender.com');
 
         if (this.userEmail)
         {
