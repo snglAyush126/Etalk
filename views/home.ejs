@@ -56,11 +56,11 @@
 <%- include('_chat_box') -%>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.6.2/socket.io.js"></script>
-<!-- <script src="/js/chat_engine.js"></script> -->
+<script src="/js/chat_engine.js"></script>
 
 <% if(locals.user){ %>
-<!-- <script>
+<script>
   new ChatEngine('user-chat-box', '<%= locals.user.email %>');
-</script> -->
+</script>
 <% } %>
 

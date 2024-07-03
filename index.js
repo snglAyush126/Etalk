@@ -17,13 +17,10 @@ const bcrypt= require("bcryptjs");
 
 
 // setup the chat server to be used with socket.io
-// const chatServer = require('http').Server(app);
-// const chatSockets = require('./config/chat_socket').chatSockets(chatServer);
-// const chatPort = process.env.CHAT_PORT || 5000;
-// chatServer.listen(chatPort, host, () => {
-//   console.log(`Chat server is running on http://${host}:${chatPort}`);
-// });
-// console.log(`Chat server is running on port: 5000`);
+const chatServer = require('http').Server(app);
+const chatSockets = require('./config/chat_socket').chatSockets(chatServer);
+const chatPort = process.env.CHAT_PORT || 5000;
+
 
 app.use(express.urlencoded({extended: true}));
 app.use(cookieParser());
@@ -60,12 +57,16 @@ app.use(customMware.setFlash);
 // use express router
 app.use('/',require('./routes'));
 
-
-app.listen(port, host, (err) => {
-  if(err){
-    console.log(`erro : ${err}`);
-  }
-  else{
-  console.log(`Server is running on http://${host}:${port}`);
-  }
+chatServer.listen(chatPort, host, () => {
+  console.log(`Server is running on http://${host}:${chatPort}`);
 });
+console.log(`Chat server is running on port: 5000`);
+
+// app.listen(port, host, (err) => {
+//   if(err){
+//     console.log(`erro : ${err}`);
+//   }
+//   else{
+//   console.log(`Server is running on http://${host}:${port}`);
+//   }
+// });
