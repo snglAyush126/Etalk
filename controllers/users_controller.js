@@ -33,7 +33,7 @@ module.exports.profile = async function(req, res)
   try{
         return res.render('user_profile',
         {
-            title: 'TalkNet | Profile',
+            title: 'Etalk | Profile',
             user: user
         });
     }
@@ -55,17 +55,17 @@ module.exports.signup= function(req,res){
     return res.redirect('/');
   }
   return res.render('user_sign_up',{
-    title: "TalkNet | Sign up "
+    title: "Etalk | Sign up "
   });
 
 }
 module.exports.sudoku= function(req,res){
   
   // return res.render('user_sign_up',{
-  //   title: "TalkNet | Sign up "
+  //   title: "Etalk | Sign up "
   // });
   return res.render('sudoku',{
-    title: "TalkNet | Games"
+    title: "Etalk | Games"
   });
 }
 
@@ -74,7 +74,7 @@ module.exports.signIn = function(req,res){
     return res.redirect('/');
   }
   return res.render('user_sign_in',{
-    title: "TalkNet | Sign In"
+    title: "Etalk | Sign In"
   });
 }
 
