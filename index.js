@@ -2,7 +2,9 @@ require('dotenv').config();
 const express = require('express');
 const cookieParser = require('cookie-parser');
 const app = express();
-const port = process.env.PORT || 9000;
+const port = process.env.PORT || 10000;
+
+const host = '0.0.0.0';
 const expressLayouts = require('express-ejs-layouts');
 const db = require('./config/mongoose');
 const session = require('express-session');
@@ -60,5 +62,7 @@ app.listen(port,function(err){
     console.log(`erro : ${err}`);
   }
 
-console.log(`server is running on port ${port} ! `);
+app.listen(port, host, () => {
+  console.log(`Server is running on http://${host}:${port}`);
+});
 });
