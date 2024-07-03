@@ -19,7 +19,10 @@ const bcrypt= require("bcryptjs");
 // setup the chat server to be used with socket.io
 const chatServer = require('http').Server(app);
 const chatSockets = require('./config/chat_socket').chatSockets(chatServer);
-chatServer.listen(5000);
+const chatPort = process.env.CHAT_PORT || 5000;
+chatServer.listen(chatPort, host, () => {
+  console.log(`Chat server is running on http://${host}:${chatPort}`);
+});
 console.log(`Chat server is running on port: 5000`);
 
 app.use(express.urlencoded({extended: true}));
