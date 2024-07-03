@@ -60,12 +60,12 @@ app.use(customMware.setFlash);
 // use express router
 app.use('/',require('./routes'));
 
-app.listen(port,function(err){
+
+app.listen(port, host, (err) => {
   if(err){
     console.log(`erro : ${err}`);
   }
-
-app.listen(port, host, () => {
+  else{
   console.log(`Server is running on http://${host}:${port}`);
-});
+  }
 });
