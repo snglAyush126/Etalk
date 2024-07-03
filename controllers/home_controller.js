@@ -26,7 +26,7 @@ module.exports.home = async (req,res) =>{
  
 }
 catch(err){
- if(err) console.log('Error Found!!');
+ if(err) console.log('Error Found home!!');
  return;
   }
 
