@@ -1,12 +1,18 @@
 require('dotenv').config();
 const mongoose = require('mongoose');
 
+// Enable detailed debugging for SSL/TLS
+process.env.NODE_DEBUG = 'tls,mongodb-native';
+
+// MongoDB connection URI
 const dbUri = `mongodb+srv://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}/Etalk`;
 const options = {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   ssl: true,
-  sslValidate: false, // Disable certificate validation (not recommended for production)
+  sslValidate: true, // Enable certificate validation for more security
+  // tlsAllowInvalidCertificates: true, // Only for testing, disable for production
+  // tlsInsecure: true, // Only for testing, disable for production
 };
 
 mongoose.connect(dbUri, options).then(() => {
@@ -26,4 +32,3 @@ db.once('open', function() {
 });
 
 module.exports = db;
-
